@@ -1,0 +1,27 @@
+<html>
+<head>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+</head>
+<body>
+  <h2 class="results-heading">Results</h2>
+
+  <div class="results">
+    <% if(data["Search"] !== undefined) { %>
+      <% data["Search"].forEach(function(movie){ %>
+        <!-- <% console.log(movie) %> -->
+          <div class="movie-card">
+            <p>- <%= movie["Year"] %> -</p>
+            <img src=<%= movie["Poster"] %> />
+            <h3><%= movie["Title"] %></h3>
+            <a href="http://www.imdb.com/title/<%= movie["imdbID"] %>" target="_blank" class="movie-link">IMDB</a>
+            <div class="type"><%= movie["Type"] %></div>
+          </div>
+          <% }) %>
+      <% } else { %>
+        <div class="no-results-message">
+          <p>Sorry, we couldn't find anything in our database :(</p>
+        </div>
+      <% } %>
+  </div>
+</body>
